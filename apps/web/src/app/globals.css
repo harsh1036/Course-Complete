@@ -2,34 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-    :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 255, 255, 255;
-  --background-end-rgb: 245, 245, 245;
+@layer base {
+  body {
+    @apply bg-forge-bg text-forge-text font-sans antialiased;
+  }
 }
 
-    
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --foreground-rgb: 255, 255, 255;
-        --background-start-rgb: 0, 0, 0;
-        --background-end-rgb: 0, 0, 0;
-      }
-    }
+/* Glassmorphism utilities */
+.glass {
+  @apply bg-forge-surface/60 backdrop-blur-xl border border-forge-border;
+}
+.glass-panel {
+  @apply bg-forge-elevated/50 backdrop-blur-md border border-forge-border;
+}
 
-    .dark {
-      --foreground-rgb: 255, 255, 255;
-      --background-start-rgb: 0, 0, 0;
-      --background-end-rgb: 0, 0, 0;
-    }
-    
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-forge-bg;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-forge-muted rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-forge-border;
+}
 
-    body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgb(var(--background-end-rgb))
-        )
-  rgb(var(--background-start-rgb));
+/* Animations */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
 }

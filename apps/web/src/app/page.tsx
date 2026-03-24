@@ -1,4 +1,5 @@
 import { WalletButton } from '@/components/wallet-button';
+import { ERC721InteractionPanel } from '@/lib/erc721-stylus/src/ERC721InteractionPanel';
 
 export default function Home() {
   return (
@@ -13,6 +14,10 @@ export default function Home() {
         
         <div className="flex justify-center">
           <WalletButton />
+        </div>
+
+        <div className="mt-12">
+          <ERC721InteractionPanel />
         </div>
       </div>
     </main>
